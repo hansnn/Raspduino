@@ -1,10 +1,6 @@
-#### Serial Codes ####
-# '0' - '9' : Blink led x times
-# 'z' : play sound
-####              ####
-
 import serial
 import sys
+import time
 
 def main():
   if len(sys.argv) > 1:
@@ -19,8 +15,8 @@ def main():
 def send_to_arduino(data):
   ser = serial.Serial('/dev/ttyACM1', 9600, timeout=5)
 
-  # You might want to put a time.sleep(2) here to give
-    # the serial connection time to initiate before writing
+  # Give the serial connection a couple of seconds to initiate
+  time.sleep(2)
 
   return ser.write(data)
 
